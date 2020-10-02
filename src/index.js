@@ -1,5 +1,6 @@
 import Game from './js/game'
 import Result from './js/result'
+import './global-style.less'
 
 (function () {
   const root = document.querySelector('.app-router')

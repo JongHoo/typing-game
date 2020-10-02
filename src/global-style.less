@@ -1,0 +1,82 @@
+@main-blue: #49a7fc;
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.app-router {
+  margin-top: 50px;
+  width: 310px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  & > .question-word {
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  & > .input-box {
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: @main-blue;
+    width: 250px;
+    margin: auto;
+    height: 40px;
+    align-items: center;
+    border-radius: 10px;
+    outline: unset;
+  }
+  & > .start-button {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: 150px;
+    margin: 20px auto;
+    height: 40px;
+    align-items: center;
+    background-color: @main-blue;
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.result {
+  & > .result-message {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  & > .result-score {
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  & > .result-comment {
+    margin-bottom: 20px;
+  }
+
+  & > .restart-button {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: 200px;
+    margin: 20px auto;
+    height: 40px;
+    align-items: center;
+    background-color: @main-blue;
+  }
+}

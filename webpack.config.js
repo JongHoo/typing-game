@@ -20,7 +20,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loader: 'less-loader', // compiles Less to CSS
+        loader: ['style-loader', 'css-loader', 'less-loader']
       },
       {
         test: /\.css$/,
