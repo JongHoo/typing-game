@@ -4,7 +4,7 @@ let questionWordDom
 let inputBoxDom
 let startButtonDom
 
-let isPlaying = false
+let isPlaying
 let score
 let leftTime
 let countInterval
@@ -35,14 +35,8 @@ const startGame = async () => {
 
 // 초기화
 const stopGame = () => {
-  isPlaying = false
   clearInterval(countInterval)
-  startButtonDom.innerHTML = '시작'
-  inputBoxDom.innerHTML = '입력'
-  inputBoxDom.setAttribute("contenteditable", false)
-  leftTimeDom.innerHTML = ''
-  scoreDom.innerHTML = ''
-  questionWordDom.innerHTML = '문제 단어'
+  initValues()
 }
 
 // 게임 시작 시 html update
@@ -130,6 +124,21 @@ const getWordList = () => {
   })
 }
 
+const initValues = () => {
+  isPlaying = false
+  score = ''
+  leftTime = ''
+  questionNumber = 1
+  totalSpentTime = 0
+  correctCount = 0
+  startButtonDom.innerHTML = '시작'
+  inputBoxDom.innerHTML = '입력'
+  inputBoxDom.setAttribute("contenteditable", false)
+  leftTimeDom.innerHTML = ''
+  scoreDom.innerHTML = ''
+  questionWordDom.innerHTML = '문제 단어'
+}
+
 export default {
   async init () {
     leftTimeDom = document.querySelector('.left-time')
@@ -147,7 +156,15 @@ export default {
       }
     })
 
-    wordList = await getWordList()
-    console.log(wordList)
-  }
+    initValues()
+    try {
+      if (!wordList.length) {
+        wordList = await this.getWordList()
+      }
+    } catch (err) {
+      console.log('ERROR :::', err)
+    }
+  },
+  getWordList,
+  stopGame
 }
