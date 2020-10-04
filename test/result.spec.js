@@ -1,4 +1,5 @@
 import result from '../src/js/result'
+import resultTemplate from '../src/containers/resultTemplate'
 
 let restartButtonDom
 let totalScoreDom
@@ -6,22 +7,7 @@ let averageTimeDom
 
 describe('result test', () => {
   beforeEach(() => {
-    document.body.innerHTML = `
-      <div class="result-wrapper">
-        <div class="center result-message">
-          Mission Complete!
-        </div>
-        <div class="center result-score">
-          당신의 점수는 <span class="total-score"></span>점입니다.
-        </div>
-        <div class="center result-comment">
-          단어당 평균 답변 시간은 <span class="average-time"></span>초입니다.
-        </div>
-        <div class="center restart-button">
-          다시 시작
-        </div>
-      </div>
-    `
+    document.body.innerHTML = resultTemplate
     restartButtonDom = document.querySelector('.restart-button')
     totalScoreDom = document.querySelector('.total-score')
     averageTimeDom = document.querySelector('.average-time')

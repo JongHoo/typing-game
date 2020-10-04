@@ -1,21 +1,24 @@
 import game from './js/game'
 import result from './js/result'
 import './global-style.less'
+import gameTemplate from './containers/gameTemplate'
+import resultTemplate from './containers/resultTemplate'
+import notfoundTemplate from './containers/notfoundTemplate'
 
 const routeInit = () => {
   const routeDom = document.querySelector('.app-router')
 
   const routes = {
-    '': './containers/game.html',
-    game: './containers/game.html',
-    result: './containers/result.html'
+    '': gameTemplate,
+    game: gameTemplate,
+    result: resultTemplate,
+    notfound: notfoundTemplate
   }
 
   const render = async () => {
     try {
       const hash = location.hash.replace('#', '')
-      const res = await fetch(routes[hash] || './containers/notfound.html')
-      routeDom.innerHTML = await res.text()
+      routeDom.innerHTML = routes[hash] || routes.notfound
 
       if (!hash || hash === 'game') {
         game.init()
