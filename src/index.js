@@ -3,7 +3,7 @@ import result from './js/result'
 import './global-style.less'
 
 const routeInit = () => {
-  const root = document.querySelector('.app-router')
+  const routeDom = document.querySelector('.app-router')
 
   const routes = {
     '': './containers/game.html',
@@ -16,7 +16,7 @@ const routeInit = () => {
       const hash = location.hash.replace('#', '')
       const url = routes[hash]
       const res = await fetch(url || './containers/notfound.html')
-      root.innerHTML = await res.text()
+      routeDom.innerHTML = await res.text()
 
       if (!hash || hash === 'game') {
         game.init()
