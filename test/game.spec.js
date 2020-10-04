@@ -9,7 +9,7 @@ let startButtonDom
 describe('game test', () => {
   beforeEach(async (done) => {
     document.body.innerHTML = `
-      <div>
+      <div class="game-wrapper">
         <div class="header">
           <div>
             남은 시간 : <span class="left-time"></span>초

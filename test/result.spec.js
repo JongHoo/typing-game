@@ -7,7 +7,7 @@ let averageTimeDom
 describe('result test', () => {
   beforeEach(() => {
     document.body.innerHTML = `
-      <div class="result">
+      <div class="result-wrapper">
         <div class="center result-message">
           Mission Complete!
         </div>
