@@ -8,8 +8,8 @@ export default {
     totalScoreDom = document.querySelector('.total-score')
     averageTimeDom = document.querySelector('.average-time')
 
-    totalScoreDom.innerHTML = sessionStorage.getItem('totalScore')
-    averageTimeDom.innerHTML = sessionStorage.getItem('averageTime')
+    totalScoreDom.innerHTML = sessionStorage.getItem('totalScore') || 0
+    averageTimeDom.innerHTML = sessionStorage.getItem('averageTime') || 0
     restartButtonDom.addEventListener('click', () => {
       location.hash = 'game'
     })

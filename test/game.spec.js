@@ -70,4 +70,30 @@ describe('game test', () => {
     expect(leftTimeDom.innerHTML).toEqual('10')
     expect(scoreDom.innerHTML).toEqual('2')
   })
+
+  it('게임이 시작된 상태에서 오답을 입력하면 점수가 깎인다.', () => {
+    startButtonDom.click()
+    expect(scoreDom.innerHTML).toEqual('2')
+    inputBoxDom.textContent = 'WRONG_ANSWER'
+    inputBoxDom.dispatchEvent(new KeyboardEvent('keypress', { key: 'Enter' }))
+    expect(scoreDom.innerHTML).toEqual('1')
+  })
+
+  it('게임이 시작된 상태에서 정답을 입력하면 다음 문제가 출제되며 남은시간이 새로 표시된다.', () => {
+    startButtonDom.click()
+    expect(leftTimeDom.innerHTML).toEqual('10')
+    inputBoxDom.textContent = 'QUESTION1'
+    inputBoxDom.dispatchEvent(new KeyboardEvent('keypress', { key: 'Enter' }))
+    expect(leftTimeDom.innerHTML).toEqual('5')
+  })
+
+  it('게임이 시작된 상태에서 모든 문제를 풀면 점수를 sessionStorage에 저장하고 location.hash 가 변경된다.', () => {
+    startButtonDom.click()
+    inputBoxDom.textContent = 'QUESTION1'
+    inputBoxDom.dispatchEvent(new KeyboardEvent('keypress', { key: 'Enter' }))
+    inputBoxDom.textContent = 'QUESTION2'
+    inputBoxDom.dispatchEvent(new KeyboardEvent('keypress', { key: 'Enter' }))
+    expect(sessionStorage.getItem('totalScore')).toEqual('2')
+    expect(location.hash).toEqual('#result')
+  })
 })

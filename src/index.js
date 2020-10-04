@@ -1,8 +1,8 @@
-import Game from './js/game'
-import Result from './js/result'
+import game from './js/game'
+import result from './js/result'
 import './global-style.less'
 
-(function () {
+const routeInit = () => {
   const root = document.querySelector('.app-router')
 
   const routes = {
@@ -19,9 +19,9 @@ import './global-style.less'
       root.innerHTML = await res.text()
 
       if (!hash || hash === 'game') {
-        Game.init()
+        game.init()
       } else if (hash === 'result') {
-        Result.init()
+        result.init()
       }
     } catch (err) {
       console.error(err)
@@ -30,4 +30,6 @@ import './global-style.less'
 
   window.addEventListener('hashchange', render)
   window.addEventListener('DOMContentLoaded', render)
-}())
+}
+
+routeInit()
