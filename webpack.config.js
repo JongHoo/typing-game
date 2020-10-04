@@ -4,9 +4,10 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry:  {
-    app: './src/index.js'
-  },
+  entry:  [
+    '@babel/polyfill',
+    './src/index.js'
+  ],
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'app.js'

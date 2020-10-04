@@ -14,8 +14,7 @@ const routeInit = () => {
   const render = async () => {
     try {
       const hash = location.hash.replace('#', '')
-      const url = routes[hash]
-      const res = await fetch(url || './containers/notfound.html')
+      const res = await fetch(routes[hash] || './containers/notfound.html')
       routeDom.innerHTML = await res.text()
 
       if (!hash || hash === 'game') {
